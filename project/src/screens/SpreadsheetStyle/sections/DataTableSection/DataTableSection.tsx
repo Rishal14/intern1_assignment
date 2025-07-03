@@ -278,13 +278,18 @@ export const DataTableSection = (): JSX.Element => {
                 >
                   <div className="inline-flex items-center gap-1 px-1 py-0.5 rounded">
                     <img
-                      className="w-4 h-4"
+                      className="w-6 h-6"
                       alt="Arrow split"
-                      src="/arrow-split.svg"
+                      src="/Arrow Split.svg"
                     />
                     <span className="font-paragraph-14-s-medium-14-20 text-[#505450] whitespace-nowrap">
                       ABC
                     </span>
+                    <img
+                      className="w-6 h-6"
+                      alt="Icon frame"
+                      src="/Icon_frame.svg"
+                    />
                     <button 
                       onClick={(e) => {
                         e.stopPropagation();
@@ -292,7 +297,7 @@ export const DataTableSection = (): JSX.Element => {
                       }}
                       className="flex w-5 h-5 items-center justify-center rounded hover:bg-[#b8d0bb]"
                     >
-                      <img className="w-4 h-4" alt="More" src="/more.svg" />
+                      {/* <img className="w-4 h-4" alt="More" src="/more.svg" /> */}
                     </button>
                   </div>
                 </button>
@@ -310,9 +315,9 @@ export const DataTableSection = (): JSX.Element => {
                 >
                   <div className="inline-flex items-center gap-1 px-1 py-0.5 rounded">
                     <img
-                      className="w-4 h-4"
+                      className="w-6 h-6"
                       alt="Arrow split"
-                      src="/arrow-split.svg"
+                      src="/Arrow Split.svg"
                     />
                     <span className="font-paragraph-14-s-medium-14-20 text-[#463e59] whitespace-nowrap">
                       Answer a question
