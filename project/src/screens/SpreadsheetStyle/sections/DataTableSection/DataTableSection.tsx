@@ -246,7 +246,7 @@ export const DataTableSection = (): JSX.Element => {
                     style={{ left: 0, width: `${getColumnWidth(1) + getColumnWidth(2) + getColumnWidth(3) + getColumnWidth(4) + getColumnWidth(5)}px` }}></div>
                   {/* Q3 Financial Overview box */}
                   <div className="relative z-10 flex items-center px-3 py-1 rounded bg-white border border-[#e0e0e0] shadow-sm mr-3 cursor-pointer hover:underline" onClick={handleDocumentClick}>
-                    <img src="/google-doc-icon.svg" alt="Doc Icon" className="w-4 h-4 mr-2" />
+                    <img src="/Link.svg" alt="Doc Icon" className="w-4 h-4 mr-2" />
                     <span className="text-sm font-semibold text-[#4a4a4a]">Q3 Financial Overview</span>
                   </div>
                 </div>
