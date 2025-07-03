@@ -285,19 +285,15 @@ export const DataTableSection = (): JSX.Element => {
                     <span className="font-paragraph-14-s-medium-14-20 text-[#505450] whitespace-nowrap">
                       ABC
                     </span>
-                    <img
-                      className="w-6 h-6"
-                      alt="Icon frame"
-                      src="/Icon_frame.svg"
-                    />
+                    
                     <button 
                       onClick={(e) => {
                         e.stopPropagation();
                         handleColumnMenuClick({ title: "ABC" }, 6);
                       }}
-                      className="flex w-5 h-5 items-center justify-center rounded hover:bg-[#b8d0bb]"
+                      className="flex w-6 h-6 items-center justify-center rounded hover:bg-[#b8d0bb]"
                     >
-                      {/* <img className="w-4 h-4" alt="More" src="/more.svg" /> */}
+                      <img className="w-6 h-6" alt="More" src="/Icon_frame.svg" />
                     </button>
                   </div>
                 </button>
@@ -327,9 +323,9 @@ export const DataTableSection = (): JSX.Element => {
                         e.stopPropagation();
                         handleColumnMenuClick({ title: "Answer a question" }, 7);
                       }}
-                      className="flex w-5 h-5 items-center justify-center rounded hover:bg-[#c4b5fc]"
+                      className="flex w-6 h-6 items-center justify-center rounded hover:bg-[#c4b5fc]"
                     >
-                      <img className="w-4 h-4" alt="More" src="/more.svg" />
+                      <img className="w-6 h-6" alt="More" src="/Icon_frame.svg" />
                     </button>
                   </div>
                 </button>
@@ -343,9 +339,9 @@ export const DataTableSection = (): JSX.Element => {
                 >
                   <div className="inline-flex items-center gap-1 px-1 py-0.5 rounded ml-[-5.00px] mr-[-5.00px]">
                     <img
-                      className="w-4 h-4"
+                      className="w-6 h-6"
                       alt="Arrow split"
-                      src="/arrow-split.svg"
+                      src="/Arrow Split.svg"
                     />
                     <span className="font-paragraph-14-s-medium-14-20 text-[#695149] whitespace-nowrap">
                       Extract
@@ -355,9 +351,9 @@ export const DataTableSection = (): JSX.Element => {
                         e.stopPropagation();
                         handleColumnMenuClick({ title: "Extract" }, 9);
                       }}
-                      className="flex w-5 h-5 items-center justify-center rounded hover:bg-[#f6aa97]"
+                      className="flex w-6 h-6 items-center justify-center rounded hover:bg-[#f6aa97]"
                     >
-                      <img className="w-4 h-4" alt="More" src="/more.svg" />
+                      <img className="w-6 h-6" alt="More" src="/Icon_frame.svg" />
                     </button>
                   </div>
                 </button>
