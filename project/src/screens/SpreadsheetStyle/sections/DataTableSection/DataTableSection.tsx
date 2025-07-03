@@ -229,6 +229,7 @@ export const DataTableSection = (): JSX.Element => {
 
   return (
     <div className="flex flex-col h-[872px] w-full bg-[#f6f6f6] overflow-hidden">
+      
       {/* Main table */}
       <div className="flex-1 overflow-auto" tabIndex={0}>
         <Table className="border-collapse">
@@ -237,133 +238,33 @@ export const DataTableSection = (): JSX.Element => {
             <TableRow className="h-8">
               {/* Empty cell for row numbers column */}
               <TableHead className="p-0 w-8 bg-white"></TableHead>
-
-              {/* Q3 Financial Overview cell beside ABC */}
-              <TableHead className="p-0 bg-white" style={{ verticalAlign: 'middle', minWidth: '220px' }}>
-                <div className="flex items-center h-8 pl-2">
-                  <button 
-                    onClick={handleDocumentClick}
-                    className="inline-flex items-center gap-1 p-1 bg-[#eeeeee] rounded hover:bg-[#e0e0e0] transition-colors"
-                  >
-                    <img className="w-4 h-4" alt="Link" src="/link.svg" />
-                    <span className="font-paragraph-12-XS-regular-12-16 text-[#545454] whitespace-nowrap">
-                      Q3 Financial Overview
-                    </span>
-                  </button>
-                  <button 
-                    onClick={handleRefreshClick}
-                    className="hover:opacity-80 transition-opacity ml-2"
-                  >
-                    <img className="w-4 h-4" alt="Arrow sync" src="/arrow-sync.svg" />
-                  </button>
+              {/* Q3 Financial Overview group header (spans Job Request, Submitted, Status, Submitter, URL) */}
+              <TableHead className="p-0 bg-white border-r border-[#ccc]" colSpan={5}>
+                <div className="relative flex h-8 items-center pl-4" style={{ minWidth: getColumnWidth(1) + getColumnWidth(2) + getColumnWidth(3) + getColumnWidth(4) + getColumnWidth(5) }}>
+                  {/* Outer box spanning Job Request to Submitter (first 5 columns only) */}
+                  <div className="absolute left-0 top-0 h-full rounded-md border border-[#e0e0e0] bg-[#e5e7eb] z-0"
+                    style={{ left: 0, width: `${getColumnWidth(1) + getColumnWidth(2) + getColumnWidth(3) + getColumnWidth(4) + getColumnWidth(5)}px` }}></div>
+                  {/* Q3 Financial Overview box */}
+                  <div className="relative z-10 flex items-center px-3 py-1 rounded bg-white border border-[#e0e0e0] shadow-sm mr-3 cursor-pointer hover:underline" onClick={handleDocumentClick}>
+                    <img src="/google-doc-icon.svg" alt="Doc Icon" className="w-4 h-4 mr-2" />
+                    <span className="text-sm font-semibold text-[#4a4a4a]">Q3 Financial Overview</span>
+                  </div>
                 </div>
               </TableHead>
-
-              {/* Regular columns */}
-              <TableHead className="p-0 bg-white" style={{ width: getColumnWidth(1) }}></TableHead>
-              <TableHead className="p-0 bg-white" style={{ width: getColumnWidth(2) }}></TableHead>
-              <TableHead className="p-0 bg-white" style={{ width: getColumnWidth(3) }}></TableHead>
-              <TableHead className="p-0 bg-white" style={{ width: getColumnWidth(4) }}></TableHead>
-              <TableHead className="p-0 bg-white" style={{ width: getColumnWidth(5) }}></TableHead>
-
-              {/* ABC column group */}
-              <TableHead className="p-0 bg-[#d2e0d4]" style={{ width: getColumnWidth(6) }}>
-                <button 
-                  onClick={() => handleGroupHeaderClick("ABC")}
-                  className="flex h-8 items-center justify-center gap-1 px-4 w-full hover:bg-[#c8dccb] transition-colors"
-                >
-                  <div className="inline-flex items-center gap-1 px-1 py-0.5 rounded">
-                    <img
-                      className="w-6 h-6"
-                      alt="Arrow split"
-                      src="/Arrow Split.svg"
-                    />
-                    <span className="font-paragraph-14-s-medium-14-20 text-[#505450] whitespace-nowrap">
-                      ABC
-                    </span>
-                    
-                    <button 
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleColumnMenuClick({ title: "ABC" }, 6);
-                      }}
-                      className="flex w-6 h-6 items-center justify-center rounded hover:bg-[#b8d0bb]"
-                    >
-                      <img className="w-6 h-6" alt="More" src="/Icon_frame.svg" />
-                    </button>
-                  </div>
-                </button>
+              {/* ABC group header above Assigned */}
+              <TableHead className="p-0 bg-[#d2e0d4] text-center" colSpan={1} style={{ width: getColumnWidth(6) }}>
+                <span className="font-paragraph-14-s-medium-14-20 text-[#505450] whitespace-nowrap">ABC</span>
               </TableHead>
-
-              {/* Answer a question column group (spans 2 columns) */}
-              <TableHead 
-                className="p-0 bg-[#dccffc]" 
-                colSpan={2}
-                style={{ width: getColumnWidth(7) + getColumnWidth(8) }}
-              >
-                <button 
-                  onClick={() => handleGroupHeaderClick("Answer a question")}
-                  className="flex h-8 items-center justify-center gap-1 px-4 w-full hover:bg-[#d0c1fc] transition-colors"
-                >
-                  <div className="inline-flex items-center gap-1 px-1 py-0.5 rounded">
-                    <img
-                      className="w-6 h-6"
-                      alt="Arrow split"
-                      src="/Arrow Split.svg"
-                    />
-                    <span className="font-paragraph-14-s-medium-14-20 text-[#463e59] whitespace-nowrap">
-                      Answer a question
-                    </span>
-                    <button 
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleColumnMenuClick({ title: "Answer a question" }, 7);
-                      }}
-                      className="flex w-6 h-6 items-center justify-center rounded hover:bg-[#c4b5fc]"
-                    >
-                      <img className="w-6 h-6" alt="More" src="/Icon_frame.svg" />
-                    </button>
-                  </div>
-                </button>
+              {/* Answer a question group header above Priority and Due Date */}
+              <TableHead className="p-0 bg-[#dccffc] text-center" colSpan={2} style={{ width: getColumnWidth(7) + getColumnWidth(8) }}>
+                <span className="font-paragraph-14-s-medium-14-20 text-[#463e59] whitespace-nowrap">Answer a question</span>
               </TableHead>
-
-              {/* Extract column group */}
-              <TableHead className="p-0 bg-[#fac2af]" style={{ width: getColumnWidth(9) }}>
-                <button 
-                  onClick={() => handleGroupHeaderClick("Extract")}
-                  className="flex h-8 items-center justify-center gap-1 px-4 w-full hover:bg-[#f8b6a3] transition-colors"
-                >
-                  <div className="inline-flex items-center gap-1 px-1 py-0.5 rounded ml-[-5.00px] mr-[-5.00px]">
-                    <img
-                      className="w-6 h-6"
-                      alt="Arrow split"
-                      src="/Arrow Split.svg"
-                    />
-                    <span className="font-paragraph-14-s-medium-14-20 text-[#695149] whitespace-nowrap">
-                      Extract
-                    </span>
-                    <button 
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleColumnMenuClick({ title: "Extract" }, 9);
-                      }}
-                      className="flex w-6 h-6 items-center justify-center rounded hover:bg-[#f6aa97]"
-                    >
-                      <img className="w-6 h-6" alt="More" src="/Icon_frame.svg" />
-                    </button>
-                  </div>
-                </button>
+              {/* Extract group header above Est. Value */}
+              <TableHead className="p-0 bg-[#fac2af] text-center" colSpan={1} style={{ width: getColumnWidth(9) }}>
+                <span className="font-paragraph-14-s-medium-14-20 text-[#695149] whitespace-nowrap">Extract</span>
               </TableHead>
-
               {/* Add column button */}
-              <TableHead className="p-0 w-[126px] border border-dashed border-[#cbcbcb]">
-                <button 
-                  onClick={handleAddColumnClick}
-                  className="flex h-8 items-center justify-center bg-[#eeeeee] w-full hover:bg-[#e0e0e0] transition-colors"
-                >
-                  <img className="w-5 h-5" alt="Add" src="/add.svg" />
-                </button>
-              </TableHead>
+              <TableHead className="p-0 w-[126px] border border-dashed border-[#cbcbcb]"></TableHead>
             </TableRow>
 
             {/* Column headers */}
