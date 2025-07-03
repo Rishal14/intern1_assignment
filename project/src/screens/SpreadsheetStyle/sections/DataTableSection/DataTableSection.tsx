@@ -105,12 +105,6 @@ export const DataTableSection = (): JSX.Element => {
   // Column header data
   const columnHeaders = [
     {
-      title: "#",
-      icon: "/number-symbol.svg",
-      bgColor: "bg-[#eeeeee]",
-      textColor: "text-[#757575]",
-    },
-    {
       title: "Job Request",
       icon: "/briefcase.svg",
       bgColor: "bg-[#eeeeee]",
@@ -235,25 +229,6 @@ export const DataTableSection = (): JSX.Element => {
 
   return (
     <div className="flex flex-col h-[872px] w-full bg-[#f6f6f6] overflow-hidden">
-      {/* Top header with document title */}
-      <div className="flex w-full h-8 items-center gap-2 p-2 bg-[#e2e2e2] z-10">
-        <button 
-          onClick={handleDocumentClick}
-          className="inline-flex items-center gap-1 p-1 bg-[#eeeeee] rounded hover:bg-[#e0e0e0] transition-colors"
-        >
-          <img className="w-4 h-4" alt="Link" src="/link.svg" />
-          <span className="font-paragraph-12-XS-regular-12-16 text-[#545454] whitespace-nowrap">
-            Q3 Financial Overview
-          </span>
-        </button>
-        <button 
-          onClick={handleRefreshClick}
-          className="hover:opacity-80 transition-opacity"
-        >
-          <img className="w-4 h-4" alt="Arrow sync" src="/arrow-sync.svg" />
-        </button>
-      </div>
-
       {/* Main table */}
       <div className="flex-1 overflow-auto" tabIndex={0}>
         <Table className="border-collapse">
@@ -262,6 +237,27 @@ export const DataTableSection = (): JSX.Element => {
             <TableRow className="h-8">
               {/* Empty cell for row numbers column */}
               <TableHead className="p-0 w-8 bg-white"></TableHead>
+
+              {/* Q3 Financial Overview cell beside ABC */}
+              <TableHead className="p-0 bg-white" style={{ verticalAlign: 'middle', minWidth: '220px' }}>
+                <div className="flex items-center h-8 pl-2">
+                  <button 
+                    onClick={handleDocumentClick}
+                    className="inline-flex items-center gap-1 p-1 bg-[#eeeeee] rounded hover:bg-[#e0e0e0] transition-colors"
+                  >
+                    <img className="w-4 h-4" alt="Link" src="/link.svg" />
+                    <span className="font-paragraph-12-XS-regular-12-16 text-[#545454] whitespace-nowrap">
+                      Q3 Financial Overview
+                    </span>
+                  </button>
+                  <button 
+                    onClick={handleRefreshClick}
+                    className="hover:opacity-80 transition-opacity ml-2"
+                  >
+                    <img className="w-4 h-4" alt="Arrow sync" src="/arrow-sync.svg" />
+                  </button>
+                </div>
+              </TableHead>
 
               {/* Regular columns */}
               <TableHead className="p-0 bg-white" style={{ width: getColumnWidth(1) }}></TableHead>

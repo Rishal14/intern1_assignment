@@ -58,7 +58,7 @@ export const NavigationBarSection = (): JSX.Element => {
 
   const handleNotificationClick = () => {
     console.log(`🔔 Notifications clicked (${notificationCount} unread)`);
-    setNotificationCount(0); // Clear notifications on click
+    setNotificationCount(0);
   };
 
   const handleProfileClick = () => {
@@ -77,7 +77,7 @@ export const NavigationBarSection = (): JSX.Element => {
           onClick={handleLogoClick}
           className="hover:opacity-80 transition-opacity"
         >
-          <img className="w-6 h-6" alt="Panel" src="/panel.svg" />
+          <img className="w-6 h-6" alt="Panel" src="/Panel.svg" />
         </button>
 
         <Breadcrumb>
