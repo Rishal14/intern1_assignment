@@ -240,31 +240,61 @@ export const DataTableSection = (): JSX.Element => {
               <TableHead className="p-0 w-8 bg-white"></TableHead>
               {/* Q3 Financial Overview group header (spans Job Request, Submitted, Status, Submitter, URL) */}
               <TableHead className="p-0 bg-white border-r border-[#ccc]" colSpan={5}>
-  <div className="relative flex h-8 items-center pl-4" style={{ minWidth: getColumnWidth(1) + getColumnWidth(2) + getColumnWidth(3) + getColumnWidth(4) + getColumnWidth(5) }}>
-    {/* Outer box spanning Job Request to Submitter (first 5 columns only) */}
-    <div className="absolute left-0 top-0 h-full rounded-md border border-[#e0e0e0] bg-[#e5e7eb] z-0"
-      style={{ left: 0, width: `${getColumnWidth(1) + getColumnWidth(2) + getColumnWidth(3) + getColumnWidth(4) + getColumnWidth(5)}px`, borderRadius: '8px', border: '1px solid #e0e0e0', background: '#e5e7eb' }}></div>
-    {/* Q3 Financial Overview box */}
-    <div className="relative z-10 flex items-center px-3 py-1 rounded bg-white border border-[#e0e0e0] shadow-sm mr-3 cursor-pointer hover:underline" onClick={handleDocumentClick}>
-      <img src="/Link.svg" alt="Doc Icon" className="w-4 h-4 mr-2" />
-      <span className="text-sm font-semibold text-[#4a4a4a]">Q3 Financial Overview</span>
-    </div>
-  </div>
-</TableHead>
+                <div className="relative flex h-8 items-center pl-4" style={{ minWidth: getColumnWidth(1) + getColumnWidth(2) + getColumnWidth(3) + getColumnWidth(4) + getColumnWidth(5) }}>
+                  {/* Outer box spanning Job Request to Submitter (first 5 columns only) */}
+                  <div className="absolute left-0 top-0 h-full rounded-md border border-[#e0e0e0] bg-[#e5e7eb] z-0"
+                    style={{ left: 0, width: `${getColumnWidth(1) + getColumnWidth(2) + getColumnWidth(3) + getColumnWidth(4) + getColumnWidth(5)}px`, borderRadius: '8px', border: '1px solid #e0e0e0', background: '#e5e7eb' }}></div>
+                  {/* Q3 Financial Overview box and Arrow Sync icon in a flex row */}
+                  <div className="flex items-center">
+                    <div className="relative z-10 flex items-center px-3 py-1 rounded bg-white border border-[#e0e0e0] shadow-sm cursor-pointer hover:underline" onClick={handleDocumentClick}>
+                      <img src="/Link.svg" alt="Doc Icon" className="w-4 h-4 mr-2" />
+                      <span className="text-sm font-semibold text-[#4a4a4a]">Q3 Financial Overview</span>
+                    </div>
+                    <img src="/Arrow Sync.svg" alt="Sync" className="w-5 h-5 ml-1" style={{ display: 'inline-block', verticalAlign: 'middle' }} />
+                  </div>
+                </div>
+              </TableHead>
               {/* ABC group header above Assigned */}
-              <TableHead className="p-0 bg-[#d2e0d4] text-center" colSpan={1} style={{ width: getColumnWidth(6) }}>
-                <span className="font-paragraph-14-s-medium-14-20 text-[#505450] whitespace-nowrap">ABC</span>
+              <TableHead className="p-0 bg-[#d2e0d4] text-center" colSpan={1} style={{ width: getColumnWidth(6), position: 'relative' }}>
+                <div className="absolute left-0 top-0 h-full w-full rounded-md border border-[#b7c7b7] bg-[#d2e0d4] z-0"></div>
+                <div className="relative z-10 flex items-center justify-center h-full w-full">
+                  <img src="/Arrow Split.svg" alt="Arrow Split" className="w-6 h-6 mr-2" />
+                  <span className="font-paragraph-14-s-medium-14-20 text-[#505450] whitespace-nowrap">ABC</span>
+                  <img src="/Icon_frame.svg" alt="Icon Frame" className="w-6 h-6 ml-2" />
+                </div>
               </TableHead>
               {/* Answer a question group header above Priority and Due Date */}
-              <TableHead className="p-0 bg-[#dccffc] text-center" colSpan={2} style={{ width: getColumnWidth(7) + getColumnWidth(8) }}>
-                <span className="font-paragraph-14-s-medium-14-20 text-[#463e59] whitespace-nowrap">Answer a question</span>
+              <TableHead className="p-0 bg-[#dccffc] text-center" colSpan={2} style={{ width: getColumnWidth(7) + getColumnWidth(8), position: 'relative' }}>
+                <div className="absolute left-0 top-0 h-full w-full rounded-md border border-[#b7a7d7] bg-[#dccffc] z-0"></div>
+                <div className="relative z-10 flex items-center justify-center h-full w-full">
+                  <img src="/Arrow Split.svg" alt="Arrow Split" className="w-6 h-6 mr-2" />
+                  <span className="font-paragraph-14-s-medium-14-20 text-[#463e59] whitespace-nowrap">Answer a question</span>
+                  <img src="/Icon_frame.svg" alt="Icon Frame" className="w-6 h-6 ml-2" />
+                </div>
               </TableHead>
               {/* Extract group header above Est. Value */}
-              <TableHead className="p-0 bg-[#fac2af] text-center" colSpan={1} style={{ width: getColumnWidth(9) }}>
-                <span className="font-paragraph-14-s-medium-14-20 text-[#695149] whitespace-nowrap">Extract</span>
+              <TableHead className="p-0 bg-[#fac2af] text-center" colSpan={1} style={{ width: getColumnWidth(9), position: 'relative' }}>
+                <div className="absolute left-0 top-0 h-full w-full rounded-md border border-[#e6bfa7] bg-[#fac2af] z-0"></div>
+                <div className="relative z-10 flex items-center justify-center h-full w-full">
+                  <img src="/Arrow Split.svg" alt="Arrow Split" className="w-6 h-6 mr-2" />
+                  <span className="font-paragraph-14-s-medium-14-20 text-[#695149] whitespace-nowrap">Extract</span>
+                  <button>
+                    <img src="/Icon_frame.svg" alt="Icon Frame" className="w-6 h-6 ml-2" />
+
+                  </button>
+                  
+                </div>
               </TableHead>
               {/* Add column button */}
-              <TableHead className="p-0 w-[126px] border border-dashed border-[#cbcbcb]"></TableHead>
+              <TableHead className="p-0 border border-dashed border-[#cbcbcb] bg-white text-center" style={{ width: 500 }}>
+                <button
+                  onClick={handleAddColumnClick}
+                  className="w-full h-8 flex items-center justify-center ml-7 pr-16 text-2xl font-bold text-[#bdbdbd] hover:text-[#4b6a4f] transition-colors"
+                  aria-label="Add column"
+                >
+                  +
+                </button>
+              </TableHead>
             </TableRow>
 
             {/* Column headers */}
@@ -276,7 +306,7 @@ export const DataTableSection = (): JSX.Element => {
                     <img
                       className="w-4 h-4"
                       alt="Number symbol"
-                      src="/number-symbol.svg"
+                      src="/Icon+Title.svg"
                     />
                   </div>
                 </div>
@@ -284,11 +314,11 @@ export const DataTableSection = (): JSX.Element => {
 
               {/* Regular column headers with resize capability */}
               {columnHeaders.map((header, index) => {
-                // Fixed widths for Job Request and Submitted
-                const fixedWidths: { [key: string]: number } = { '0': 200, '1': 140 };
+                // Fixed widths for Job Request, Submitted, Assigned, and URL
+                const fixedWidths: { [key: string]: number } = { '0': 240, '1': 140, '4': 180, '5': 180 };
                 const width = fixedWidths[index.toString()] || getColumnWidth(index);
                 return (
-                  <TableHead key={index} className="p-0" style={{ width: fixedWidths[index.toString()] ? `${fixedWidths[index.toString()]}px` : undefined, minWidth: fixedWidths[index.toString()] ? `${fixedWidths[index.toString()]}px` : undefined, maxWidth: fixedWidths[index.toString()] ? `${fixedWidths[index.toString()]}px` : undefined }}>
+                  <TableHead key={index} className="p-0">
                     <ResizableHeader
                       width={width}
                       onResize={(newWidth) => {
@@ -308,26 +338,26 @@ export const DataTableSection = (): JSX.Element => {
                       <div className="flex flex-1 items-center gap-1">
                         {/* Use Shape SVGs for the first five columns */}
                         {index === 0 && (
-                          <img className="w-4 h-4" alt="Shape 1" src="/Shape (1).svg" />
+                          <img className="w-4 h-4" alt="Shape 1" src="/Shape.svg" />
                         )}
                         {index === 1 && (
-                          <img className="w-4 h-4" alt="Shape 2" src="/Shape (2).svg" />
+                          <img className="w-4 h-4" alt="Shape 2" src="/Shape (1).svg" />
                         )}
                         {index === 2 && (
-                          <img className="w-4 h-4" alt="Shape 3" src="/Shape (3).svg" />
+                          <img className="w-4 h-4" alt="Shape 3" src="/Shape (2).svg" />
                         )}
                         {index === 3 && (
-                          <img className="w-4 h-4" alt="Shape 4" src="/Shape (4).svg" />
+                          <img className="w-4 h-4" alt="Shape 4" src="/Shape (3).svg" />
                         )}
                         {index === 4 && (
-                          <img className="w-4 h-4" alt="Shape 5" src="/Shape (5).svg" />
+                          <img className="w-4 h-4" alt="Shape 5" src="/Shape (4).svg" />
                         )}
                         {/* For other columns, use the default icon logic */}
                         {index > 4 && header.icon && (
                           <img
                             className="w-4 h-4"
                             alt={header.title}
-                            src={header.icon}
+                            src="/Shape (5).svg"
                           />
                         )}
                         <span
@@ -336,15 +366,15 @@ export const DataTableSection = (): JSX.Element => {
                         >
                           {header.title}
                         </span>
-                        {index !== 7 && index !== 8 && index !== 9 && (
+                        {index !== 5 && index !== 6 && index !== 7 && index !== 8 && index !== 9 && (
                           <button 
                             onClick={() => handleColumnMenuClick(header, index)}
                             className="inline-flex items-center gap-2 p-1 rounded hover:bg-black hover:bg-opacity-10 transition-colors"
                           >
                             <img
-                              className="w-3 h-3"
+                              className="w-6 h-6"
                               alt="Chevron"
-                              src="/chevron-2.svg"
+                              src="/Dropdown (1).svg"
                             />
                           </button>
                         )}
@@ -353,9 +383,6 @@ export const DataTableSection = (): JSX.Element => {
                   </TableHead>
                 );
               })}
-
-              {/* Empty header for add column */}
-              <TableHead className="p-0"></TableHead>
             </TableRow>
           </TableHeader>
 

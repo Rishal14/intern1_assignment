@@ -160,7 +160,7 @@ export const NavigationBarSection = (): JSX.Element => {
           onClick={handleProfileClick}
         >
           <Avatar className="w-7 h-7">
-            <AvatarImage src="/ellipse-1.png" alt="User avatar" />
+            <AvatarImage src="/Ellipse 1.svg" alt="User avatar" />
             <AvatarFallback>JD</AvatarFallback>
           </Avatar>
 
