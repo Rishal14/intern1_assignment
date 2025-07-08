@@ -240,17 +240,17 @@ export const DataTableSection = (): JSX.Element => {
               <TableHead className="p-0 w-8 bg-white"></TableHead>
               {/* Q3 Financial Overview group header (spans Job Request, Submitted, Status, Submitter, URL) */}
               <TableHead className="p-0 bg-white border-r border-[#ccc]" colSpan={5}>
-                <div className="relative flex h-8 items-center pl-4" style={{ minWidth: getColumnWidth(1) + getColumnWidth(2) + getColumnWidth(3) + getColumnWidth(4) + getColumnWidth(5) }}>
-                  {/* Outer box spanning Job Request to Submitter (first 5 columns only) */}
-                  <div className="absolute left-0 top-0 h-full rounded-md border border-[#e0e0e0] bg-[#e5e7eb] z-0"
-                    style={{ left: 0, width: `${getColumnWidth(1) + getColumnWidth(2) + getColumnWidth(3) + getColumnWidth(4) + getColumnWidth(5)}px` }}></div>
-                  {/* Q3 Financial Overview box */}
-                  <div className="relative z-10 flex items-center px-3 py-1 rounded bg-white border border-[#e0e0e0] shadow-sm mr-3 cursor-pointer hover:underline" onClick={handleDocumentClick}>
-                    <img src="/Link.svg" alt="Doc Icon" className="w-4 h-4 mr-2" />
-                    <span className="text-sm font-semibold text-[#4a4a4a]">Q3 Financial Overview</span>
-                  </div>
-                </div>
-              </TableHead>
+  <div className="relative flex h-8 items-center pl-4" style={{ minWidth: getColumnWidth(1) + getColumnWidth(2) + getColumnWidth(3) + getColumnWidth(4) + getColumnWidth(5) }}>
+    {/* Outer box spanning Job Request to Submitter (first 5 columns only) */}
+    <div className="absolute left-0 top-0 h-full rounded-md border border-[#e0e0e0] bg-[#e5e7eb] z-0"
+      style={{ left: 0, width: `${getColumnWidth(1) + getColumnWidth(2) + getColumnWidth(3) + getColumnWidth(4) + getColumnWidth(5)}px`, borderRadius: '8px', border: '1px solid #e0e0e0', background: '#e5e7eb' }}></div>
+    {/* Q3 Financial Overview box */}
+    <div className="relative z-10 flex items-center px-3 py-1 rounded bg-white border border-[#e0e0e0] shadow-sm mr-3 cursor-pointer hover:underline" onClick={handleDocumentClick}>
+      <img src="/Link.svg" alt="Doc Icon" className="w-4 h-4 mr-2" />
+      <span className="text-sm font-semibold text-[#4a4a4a]">Q3 Financial Overview</span>
+    </div>
+  </div>
+</TableHead>
               {/* ABC group header above Assigned */}
               <TableHead className="p-0 bg-[#d2e0d4] text-center" colSpan={1} style={{ width: getColumnWidth(6) }}>
                 <span className="font-paragraph-14-s-medium-14-20 text-[#505450] whitespace-nowrap">ABC</span>
@@ -283,56 +283,76 @@ export const DataTableSection = (): JSX.Element => {
               </TableHead>
 
               {/* Regular column headers with resize capability */}
-              {columnHeaders.map((header, index) => (
-                <TableHead key={index} className="p-0">
-                  <ResizableHeader
-                    width={getColumnWidth(index)}
-                    onResize={(newWidth) => {
-                      handleResize(index, newWidth);
-                      console.log(`📏 Column ${index + 1} (${header.title}) resized to ${newWidth}px`);
-                    }}
-                    onResizeStart={() => {
-                      startResize(index);
-                      console.log(`📏 Started resizing column ${index + 1} (${header.title})`);
-                    }}
-                    onResizeEnd={() => {
-                      stopResize();
-                      console.log(`📏 Finished resizing column ${index + 1} (${header.title})`);
-                    }}
-                    className={`flex h-8 items-center gap-1 pl-2 pr-1 ${header.bgColor}`}
-                  >
-                    <button 
-                      onClick={() => handleColumnHeaderClick(header, index)}
-                      className="flex-1 flex items-center gap-1 hover:bg-black hover:bg-opacity-5 rounded px-1 transition-colors"
+              {columnHeaders.map((header, index) => {
+                // Fixed widths for Job Request and Submitted
+                const fixedWidths: { [key: string]: number } = { '0': 200, '1': 140 };
+                const width = fixedWidths[index.toString()] || getColumnWidth(index);
+                return (
+                  <TableHead key={index} className="p-0" style={{ width: fixedWidths[index.toString()] ? `${fixedWidths[index.toString()]}px` : undefined, minWidth: fixedWidths[index.toString()] ? `${fixedWidths[index.toString()]}px` : undefined, maxWidth: fixedWidths[index.toString()] ? `${fixedWidths[index.toString()]}px` : undefined }}>
+                    <ResizableHeader
+                      width={width}
+                      onResize={(newWidth) => {
+                        handleResize(index, newWidth);
+                        console.log(`📏 Column ${index + 1} (${header.title}) resized to ${newWidth}px`);
+                      }}
+                      onResizeStart={() => {
+                        startResize(index);
+                        console.log(`📏 Started resizing column ${index + 1} (${header.title})`);
+                      }}
+                      onResizeEnd={() => {
+                        stopResize();
+                        console.log(`📏 Finished resizing column ${index + 1} (${header.title})`);
+                      }}
+                      className={`flex h-8 items-center gap-1 pl-2 pr-1 ${header.bgColor}`}
                     >
-                      {header.icon && (
-                        <img
-                          className="w-4 h-4"
-                          alt={header.title}
-                          src={header.icon}
-                        />
-                      )}
-                      <span
-                        className={`flex-1 mt-[-1.00px] font-paragraph-12-XS-semi-bold-12-16 ${header.textColor} truncate`}
-                      >
-                        {header.title}
-                      </span>
-                    </button>
-                    {index !== 7 && index !== 8 && index !== 9 && (
-                      <button 
-                        onClick={() => handleColumnMenuClick(header, index)}
-                        className="inline-flex items-center gap-2 p-1 rounded hover:bg-black hover:bg-opacity-10 transition-colors"
-                      >
-                        <img
-                          className="w-3 h-3"
-                          alt="Chevron"
-                          src="/chevron-2.svg"
-                        />
-                      </button>
-                    )}
-                  </ResizableHeader>
-                </TableHead>
-              ))}
+                      <div className="flex flex-1 items-center gap-1">
+                        {/* Use Shape SVGs for the first five columns */}
+                        {index === 0 && (
+                          <img className="w-4 h-4" alt="Shape 1" src="/Shape (1).svg" />
+                        )}
+                        {index === 1 && (
+                          <img className="w-4 h-4" alt="Shape 2" src="/Shape (2).svg" />
+                        )}
+                        {index === 2 && (
+                          <img className="w-4 h-4" alt="Shape 3" src="/Shape (3).svg" />
+                        )}
+                        {index === 3 && (
+                          <img className="w-4 h-4" alt="Shape 4" src="/Shape (4).svg" />
+                        )}
+                        {index === 4 && (
+                          <img className="w-4 h-4" alt="Shape 5" src="/Shape (5).svg" />
+                        )}
+                        {/* For other columns, use the default icon logic */}
+                        {index > 4 && header.icon && (
+                          <img
+                            className="w-4 h-4"
+                            alt={header.title}
+                            src={header.icon}
+                          />
+                        )}
+                        <span
+                          className={`flex-1 mt-[-1.00px] font-paragraph-12-XS-semi-bold-12-16 ${header.textColor}${[0,1].includes(index) ? ' whitespace-nowrap text-left' : ' truncate'}`}
+                          style={{ width: [0,1].includes(index) ? '100%' : undefined, minWidth: [0,1].includes(index) ? 0 : undefined, maxWidth: [0,1].includes(index) ? '100%' : undefined }}
+                        >
+                          {header.title}
+                        </span>
+                        {index !== 7 && index !== 8 && index !== 9 && (
+                          <button 
+                            onClick={() => handleColumnMenuClick(header, index)}
+                            className="inline-flex items-center gap-2 p-1 rounded hover:bg-black hover:bg-opacity-10 transition-colors"
+                          >
+                            <img
+                              className="w-3 h-3"
+                              alt="Chevron"
+                              src="/chevron-2.svg"
+                            />
+                          </button>
+                        )}
+                      </div>
+                    </ResizableHeader>
+                  </TableHead>
+                );
+              })}
 
               {/* Empty header for add column */}
               <TableHead className="p-0"></TableHead>
