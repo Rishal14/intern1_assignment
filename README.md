@@ -45,6 +45,11 @@ A pixel-perfect React spreadsheet application built with TypeScript, Tailwind CS
 ## 📦 Installation & Setup
 
 ```bash
+
+git clone https://github.com/Rishal14/intern1_assignment.git
+
+cd project
+
 # Install dependencies
 npm install
 
